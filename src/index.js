@@ -6,9 +6,8 @@ import { Provider } from 'react-redux'
 import { rootReducer } from './Redux/rootReducer'
 import reduxThunk from 'redux-thunk'
 
-const store = createStore(rootReducer, compose(applyMiddleware(reduxThunk),
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-))
+const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ ? compose(applyMiddleware(reduxThunk),
+  window.__REDUX_DEVTOOLS_EXTENSION__()) : applyMiddleware(reduxThunk))
 
 const app = (
   <Provider store={store}>
